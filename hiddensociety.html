@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hidden Society | The Ultimate Elite Wealth Network</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* =========================================
+   CORE SETUP & CSS VARIABLES
+   ========================================= */
+:root {
+    --bg-void: #030303;
+    --bg-surface: #0a0a0a;
+    --bg-panel: #111111;
+    --gold-primary: #d4af37;
+    --gold-light: #f3e5ab;
+    --gold-dark: #997a00;
+    --gold-dim: rgba(212, 175, 55, 0.15);
+    --text-main: #a1a1aa;
+    --text-heading: #ffffff;
+    --glass-border: rgba(212, 175, 55, 0.2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
+body { 
+    background-color: var(--bg-void); 
+    color: var(--text-main); 
+    font-family: 'Montserrat', sans-serif; 
+    overflow-x: hidden;
+}
+
+/* =========================================
+   TYPOGRAPHY UTILITIES
+   ========================================= */
+.font-society { font-family: 'Cinzel', serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+.text-gradient-gold {
+    background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #997a00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shine 5s linear infinite;
+}
+
+/* =========================================
+   BACKGROUNDS & TEXTURES
+   ========================================= */
+.bg-topography {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.glow-orb-gold {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* =========================================
+   CUSTOM SCROLLBAR
+   ========================================= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-primary); }
+
+/* =========================================
+   CUSTOM CURSOR (Elite Ring)
+   ========================================= */
+.cursor-dot, .cursor-ring {
+    position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+    border-radius: 50%; z-index: 9999; pointer-events: none;
+}
+.cursor-dot {
+    width: 6px; height: 6px; background-color: var(--gold-primary);
+    box-shadow: 0 0 10px var(--gold-primary);
+}
+.cursor-ring {
+    width: 45px; height: 45px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+}
+.cursor-hover .cursor-ring {
+    width: 70px; height: 70px;
+    background-color: rgba(212, 175, 55, 0.05);
+    border-color: var(--gold-primary);
+}
+
+/* =========================================
+   KEYFRAME ANIMATIONS
+   ========================================= */
+@keyframes shine { to { background-position: 200% center; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes slide-ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+    50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.6); }
+}
+
+/* =========================================
+   UTILITY & COMPONENT CLASSES
+   ========================================= */
+.ticker-wrap { animation: slide-ticker 30s linear infinite; }
+.ticker-wrap:hover { animation-play-state: paused; }
+.floating { animation: float 7s ease-in-out infinite; }
+
+.glass-panel {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+}
+.card-hover { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.card-hover:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-primary);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+/* Elite Gold Button */
+.btn-gold {
+    background: transparent;
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-primary);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.btn-gold::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary));
+    z-index: -1; transition: all 0.4s ease;
+}
+.btn-gold:hover::before { left: 0; }
+.btn-gold:hover { 
+    color: #000; 
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); 
+    border-color: transparent;
+}
+
+/* SCROLL REVEAL FRAMEWORK */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+</style>
+</head>
+<body class="relative hover-target-wrapper bg-topography">
+
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<div class="fixed inset-0 bg-gradient-to-b from-transparent via-[#030303]/90 to-[#030303] z-[-1]"></div>
+
+<div class="w-full bg-[#0a0a0a] border-b border-[rgba(212,175,55,0.2)] py-2.5 overflow-hidden relative z-50">
+    <div class="flex whitespace-nowrap ticker-wrap items-center">
+        <div class="flex items-center gap-10 px-5 font-mono text-[10px] uppercase tracking-widest text-gray-500">
+            <span class="text-white"><i class="fa-solid fa-eye text-[var(--gold-primary)] mr-2"></i> HIDDEN SOCIETY</span>
+            <span class="text-gray-800">|</span>
+            <span class="text-[var(--gold-primary)]">BTC LONG +145%</span>
+            <span class="text-gray-800">|</span>
+            <span>JORDAN 4 FLIP +$250</span>
+            <span class="text-gray-800">|</span>
+            <span class="text-[var(--gold-primary)]">E-COM STORE VALUED $1.2M</span>
+            <span class="text-gray-800">|</span>
+            <span>SPY OPTIONS +300%</span>
+            <span class="text-gray-800">|</span>
+            <span class="text-[var(--gold-primary)]">AMAZON FBA AUTOMATION</span>
+            <span class="text-gray-800">|</span>
+        </div>
+        <div class="flex items-center gap-10 px-5 font-mono text-[10px] uppercase tracking-widest text-gray-500">
+            <span class="text-white"><i class="fa-solid fa-eye text-[var(--gold-primary)] mr-2"></i> HIDDEN SOCIETY</span>
+            <span class="text-gray-800">|</span>
+            <span class="text-[var(--gold-primary)]">BTC LONG +145%</span>
+            <span class="text-gray-800">|</span>
+            <span>JORDAN 4 FLIP +$250</span>
+            <span class="text-gray-800">|</span>
+            <span class="text-[var(--gold-primary)]">E-COM STORE VALUED $1.2M</span>
+            <span class="text-gray-800">|</span>
+            <span>SPY OPTIONS +300%</span>
+            <span class="text-gray-800">|</span>
+            <span class="text-[var(--gold-primary)]">AMAZON FBA AUTOMATION</span>
+            <span class="text-gray-800">|</span>
+        </div>
+    </div>
+</div>
+
+<nav id="navbar" class="fixed w-full z-40 transition-all duration-500 py-5 top-[40px] border-b border-transparent">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-center glass-panel px-8 py-4 rounded-sm">
+            
+            <a href="#" class="flex items-center gap-4 group no-underline hover-target">
+                <div class="w-10 h-10 border border-[var(--gold-primary)] flex items-center justify-center bg-[#050505] shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] transition-all">
+                    <i class="fa-solid fa-mask text-[var(--gold-primary)] text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-society font-bold text-white text-xl tracking-[0.2em] leading-none group-hover:text-[var(--gold-primary)] transition-colors uppercase">Hidden</span>
+                    <span class="font-mono text-[9px] text-gray-500 tracking-[0.4em] uppercase mt-1">Society</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="#manifesto" class="text-xs font-society font-bold text-gray-400 hover:text-[var(--gold-primary)] transition-colors tracking-widest uppercase hover-target">The Doctrine</a>
+                <a href="#vault" class="text-xs font-society font-bold text-gray-400 hover:text-[var(--gold-primary)] transition-colors tracking-widest uppercase hover-target">The Vault</a>
+                <a href="#results" class="text-xs font-society font-bold text-gray-400 hover:text-[var(--gold-primary)] transition-colors tracking-widest uppercase hover-target">Proof</a>
+                <a href="#pricing" class="text-xs font-society font-bold text-gray-400 hover:text-[var(--gold-primary)] transition-colors tracking-widest uppercase hover-target">Membership</a>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="https://whop.com/hidden-society?a=digitalartlab" target="_blank" class="font-mono text-xs text-gray-400 hover:text-white transition-all hover-target uppercase tracking-widest">
+                    Login
+                </a>
+                <a href="#pricing" class="btn-gold px-8 py-3 rounded-sm font-society font-bold text-sm tracking-widest hover-target">
+                    REQUEST ACCESS
+                </a>
+            </div>
+
+            <button id="menu-btn" class="lg:hidden text-[var(--gold-primary)] focus:outline-none text-2xl hover-target">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden absolute top-full left-6 right-6 mt-2 glass-panel hidden flex-col overflow-hidden border border-[var(--gold-primary)]/30">
+        <a href="#manifesto" class="px-6 py-4 border-b border-[rgba(212,175,55,0.1)] text-gray-300 font-society uppercase tracking-widest hover:text-[var(--gold-primary)]">The Doctrine</a>
+        <a href="#vault" class="px-6 py-4 border-b border-[rgba(212,175,55,0.1)] text-gray-300 font-society uppercase tracking-widest hover:text-[var(--gold-primary)]">The Vault</a>
+        <a href="#results" class="px-6 py-4 border-b border-[rgba(212,175,55,0.1)] text-gray-300 font-society uppercase tracking-widest hover:text-[var(--gold-primary)]">Proof</a>
+        <a href="https://whop.com/hidden-society?a=digitalartlab" class="px-6 py-4 border-b border-[rgba(212,175,55,0.1)] text-[var(--gold-primary)] font-mono text-xs uppercase tracking-widest">Member Login</a>
+        <a href="#pricing" class="px-6 py-5 text-center bg-[var(--gold-primary)] text-black font-society font-bold tracking-widest text-lg">REQUEST ACCESS</a>
+    </div>
+</nav>
+
+<section class="relative min-h-[100vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
+    
+    <div class="glow-orb-gold top-1/4 left-[-10%] floating"></div>
+    <div class="glow-orb-gold bottom-10 right-[-10%] floating" style="animation-delay: 3s; opacity: 0.6;"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 text-center lg:text-left">
+            
+            <div class="inline-flex items-center gap-3 px-5 py-2 border border-[var(--gold-primary)] bg-[rgba(212,175,55,0.05)] mb-8 reveal hover-target backdrop-blur-sm">
+                <i class="fa-solid fa-key text-[var(--gold-primary)] text-sm"></i>
+                <span class="text-[10px] font-bold text-[var(--gold-primary)] tracking-[0.3em] uppercase font-mono">The 1% Wealth Ecosystem</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-society font-black text-white leading-[1.1] mb-6 reveal delay-100 uppercase tracking-wide">
+                UNCOVER <br>
+                <span class="text-gradient-gold">THE UNSEEN.</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed reveal delay-200 font-montserrat">
+                Step out of the matrix. <strong class="text-white">Hidden Society</strong> is the premier collective for elite trading, sneaker reselling, and e-commerce dominance. We provide the tools, the network, and the secrets the 1% use to print money daily.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 reveal delay-300">
+                <a href="#pricing" class="w-full sm:w-auto px-12 py-5 btn-gold font-society font-bold text-lg text-center hover-target tracking-widest shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                    ENTER THE SOCIETY
+                </a>
+                <a href="#manifesto" class="w-full sm:w-auto px-10 py-5 border border-gray-700 hover:border-[var(--gold-primary)] text-gray-300 hover:text-[var(--gold-primary)] font-society font-bold text-lg transition-all text-center tracking-widest hover-target bg-[rgba(0,0,0,0.5)] backdrop-blur-md">
+                    READ THE DOCTRINE
+                </a>
+            </div>
+
+            <div class="mt-14 flex items-center justify-center lg:justify-start gap-8 reveal delay-300">
+                <div class="flex -space-x-4">
+                    <div class="w-12 h-12 rounded-full border-2 border-black bg-[#111] flex items-center justify-center text-[var(--gold-primary)] text-lg"><i class="fa-solid fa-user-secret"></i></div>
+                    <div class="w-12 h-12 rounded-full border-2 border-black bg-[#111] flex items-center justify-center text-[var(--gold-primary)] text-lg"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="w-12 h-12 rounded-full border-2 border-black bg-[#111] flex items-center justify-center text-[var(--gold-primary)] text-lg"><i class="fa-solid fa-shoe-prints"></i></div>
+                    <div class="w-12 h-12 rounded-full border-2 border-[var(--gold-primary)] bg-[var(--gold-primary)] flex items-center justify-center text-black text-xs font-bold font-mono">+10K</div>
+                </div>
+                <div class="text-sm border-l border-gray-800 pl-6">
+                    <div class="text-white font-society font-bold text-xl tracking-wider">EST. 2019</div>
+                    <span class="text-gray-500 font-mono text-[9px] uppercase tracking-widest">Industry Pioneers</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5 relative hidden lg:block reveal delay-200">
+            <div class="relative z-10 glass-panel p-6 border border-[var(--gold-primary)] shadow-[0_0_60px_rgba(212,175,55,0.15)] floating">
+                
+                <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-satellite-dish text-[var(--gold-primary)]"></i>
+                        <span class="font-mono text-xs text-white tracking-widest uppercase">Live Society Feed</span>
+                    </div>
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="bg-[#0a0a0a] p-4 border border-gray-800 rounded-sm relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-mono text-[10px] text-green-500 tracking-widest uppercase border border-green-500/30 bg-green-500/10 px-2 py-0.5">Options Alert</span>
+                            <span class="text-gray-600 text-[9px] font-mono">1m ago</span>
+                        </div>
+                        <h4 class="text-white font-bold font-mono text-sm mb-1">BTO $NVDA 850C @ 3.45</h4>
+                        <p class="text-gray-400 text-xs">Unusual options activity detected. Target 1: 4.50</p>
+                    </div>
+
+                    <div class="bg-[#0a0a0a] p-4 border border-gray-800 rounded-sm relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#d4af37]"></div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-mono text-[10px] text-[#d4af37] tracking-widest uppercase border border-[#d4af37]/30 bg-[#d4af37]/10 px-2 py-0.5">Shock Drop</span>
+                            <span class="text-gray-600 text-[9px] font-mono">4m ago</span>
+                        </div>
+                        <h4 class="text-white font-bold font-mono text-sm mb-1">Jordan 4 'Bred Reimagined'</h4>
+                        <p class="text-gray-400 text-xs">Stock loaded on SNKRS backend. Start tasks now. Expected Profit: $150+</p>
+                    </div>
+
+                    <div class="bg-[#0a0a0a] p-4 border border-gray-800 rounded-sm relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-purple-500"></div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-mono text-[10px] text-purple-500 tracking-widest uppercase border border-purple-500/30 bg-purple-500/10 px-2 py-0.5">E-Com Strategy</span>
+                            <span class="text-gray-600 text-[9px] font-mono">12m ago</span>
+                        </div>
+                        <h4 class="text-white font-bold font-mono text-sm mb-1">Winning Product Identified</h4>
+                        <p class="text-gray-400 text-xs">TikTok organic testing showed 12% CTR. Supplier links and ad creatives posted in vault.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute -right-10 top-1/2 transform -translate-y-1/2 glass-panel p-4 border-[var(--gold-primary)] floating" style="animation-delay: 2s; z-index: 20;">
+                <div class="flex items-center gap-4">
+                    <div class="text-[var(--gold-primary)] text-3xl"><i class="fa-solid fa-sack-dollar"></i></div>
+                    <div>
+                        <div class="font-society text-white text-xl font-bold">+$2.4M</div>
+                        <div class="font-mono text-[9px] text-gray-500 uppercase tracking-widest">Member Profit (YTD)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="border-y border-gray-900 bg-[#050505] relative z-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-900">
+            <div class="p-8 text-center reveal">
+                <div class="font-society text-3xl lg:text-4xl text-[var(--gold-primary)] font-bold mb-3">7+ YEARS</div>
+                <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Industry Dominance</div>
+            </div>
+            <div class="p-8 text-center reveal delay-100">
+                <div class="font-society text-3xl lg:text-4xl text-white font-bold mb-3">3 PATHS</div>
+                <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Trading · Reselling · E-com</div>
+            </div>
+            <div class="p-8 text-center reveal delay-200">
+                <div class="font-society text-3xl lg:text-4xl text-white font-bold mb-3">24/7/365</div>
+                <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Real-time Monitors</div>
+            </div>
+            <div class="p-8 text-center reveal delay-300">
+                <div class="font-society text-3xl lg:text-4xl text-[var(--gold-primary)] font-bold mb-3">20%</div>
+                <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Affiliate Revenue</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="manifesto" class="py-32 relative overflow-hidden bg-[#030303]">
+    <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-[rgba(212,175,55,0.05)] to-transparent pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-[1px] bg-[var(--gold-primary)]"></div>
+                    <span class="text-[var(--gold-primary)] font-mono tracking-widest uppercase text-xs">The Doctrine</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-society font-bold text-white mb-8 leading-tight uppercase">
+                    THE SYSTEM IS <br><span class="text-gradient-gold">RIGGED AGAINST YOU.</span>
+                </h2>
+                
+                <div class="space-y-6 text-gray-400 font-light leading-relaxed text-sm md:text-base font-montserrat">
+                    <p class="first-letter:text-6xl first-letter:font-society first-letter:text-[var(--gold-primary)] first-letter:mr-3 first-letter:float-left">
+                        Society teaches you to go to school, get a degree, work 40 hours a week for 40 years, and retire on what's left. That is the matrix. While the 99% trades time for a fixed salary, the 1% operates in the shadows, leveraging information, networks, and arbitrage to generate asymmetric wealth.
+                    </p>
+                    <p>
+                        <strong class="text-white">Hidden Society was built to bridge that gap.</strong> We provide the exact same tools, monitors, and insider information that institutional traders and elite resellers use. 
+                    </p>
+                    <p>
+                        Whether you want to strictly focus on <span class="text-[var(--gold-primary)] font-medium">Trading (Options, Crypto)</span> or unlock the full <span class="text-[var(--gold-primary)] font-medium">Wealth Ecosystem (Reselling, Amazon FBA, E-com)</span>, we give you the blueprint. But a blueprint is useless without action. We provide the map; you walk the path.
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <a href="#vault" class="inline-flex items-center gap-3 text-[var(--gold-primary)] hover:text-white font-mono text-xs uppercase tracking-widest transition-colors hover-target group border-b border-[var(--gold-primary)] pb-1">
+                        Explore The Vault <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative reveal delay-200">
+                <div class="relative rounded-sm overflow-hidden border border-gray-800 group hover-target">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1000&auto=format&fit=crop" alt="Wealth Generation" class="w-full h-auto opacity-40 filter grayscale contrast-150 transition-all duration-700 group-hover:opacity-70 group-hover:grayscale-0">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent"></div>
+                    
+                    <div class="absolute top-6 left-6 w-8 h-8 border-t-2 border-l-2 border-[var(--gold-primary)]"></div>
+                    <div class="absolute bottom-6 right-6 w-8 h-8 border-b-2 border-r-2 border-[var(--gold-primary)]"></div>
+
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center mix-blend-overlay opacity-80">
+                        <i class="fa-solid fa-eye text-8xl text-white"></i>
+                    </div>
+                </div>
+                
+                <div class="absolute -bottom-8 -left-8 md:-left-12 glass-panel p-6 border-[var(--gold-primary)]/50 shadow-[0_20px_40px_rgba(0,0,0,0.9)] max-w-xs">
+                    <i class="fa-solid fa-quote-left text-[var(--gold-primary)] text-2xl mb-3"></i>
+                    <p class="font-society text-white text-sm leading-relaxed italic">"Information is the currency of the modern world. Those who have it, rule. Those who don't, serve."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-24 relative bg-[#0a0a0a] border-y border-[rgba(212,175,55,0.1)]">
+    <div class="absolute inset-0 z-0 opacity-10 bg-topography pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="glass-panel p-10 md:p-16 border-[var(--gold-primary)] shadow-[0_0_50px_rgba(212,175,55,0.05)] reveal hover-target">
+            <i class="fa-solid fa-quote-left text-5xl text-[var(--gold-dim)] absolute top-10 left-10"></i>
+            
+            <div class="relative z-10 text-center mb-10">
+                <div class="w-16 h-16 mx-auto rounded-full bg-[#030303] border border-[var(--gold-primary)] flex items-center justify-center text-[var(--gold-primary)] text-2xl mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <h3 class="font-society text-3xl md:text-4xl text-white uppercase tracking-widest mb-2">A Message from the Inside</h3>
+                <div class="w-24 h-[1px] bg-[var(--gold-primary)] mx-auto mt-4"></div>
+            </div>
+
+            <div class="space-y-6 font-montserrat text-gray-400 leading-loose font-light text-sm md:text-base relative z-10">
+                <p>
+                    They tell you the system is fair. They tell you to save 10% of your paycheck and wait until you are 65 to enjoy your life. That is the greatest lie ever sold. The wealth gap isn't about intelligence; it's about access to <strong class="text-white">asymmetric information</strong>.
+                </p>
+                <p>
+                    When a sneaker drops, our monitors ping it 0.4 seconds after it hits the backend. When a stock is about to break out, our institutional analysts spot the options flow before the retail market even wakes up. We don't play by the same rules as the masses. 
+                </p>
+                <p>
+                    Hidden Society was not built for everyone. It was built for those who realize that trading time for money is a losing game. Whether you leverage our automated checkout bots for e-commerce or follow our 7-figure traders, the goal is the same: absolute financial sovereignty. Enter the vault, apply the blueprints, and disappear into wealth.
+                </p>
+            </div>
+
+            <div class="mt-12 text-center relative z-10">
+                <p class="font-society text-[var(--gold-primary)] text-xl tracking-[0.2em] uppercase">The Architects</p>
+                <p class="font-mono text-xs text-gray-600 uppercase tracking-widest mt-2">Hidden Society Founders</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="vault" class="py-32 relative bg-[#030303] overflow-hidden">
+    <div class="absolute right-0 top-1/4 w-96 h-96 bg-[var(--gold-primary)] rounded-full mix-blend-multiply filter blur-[150px] opacity-10 animate-pulse"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center mb-20 reveal">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <div class="w-16 h-[1px] bg-[var(--gold-primary)]"></div>
+                <span class="text-[var(--gold-primary)] font-mono tracking-widest uppercase text-xs">Unrestricted Access</span>
+                <div class="w-16 h-[1px] bg-[var(--gold-primary)]"></div>
+            </div>
+            <h3 class="text-4xl md:text-5xl lg:text-6xl font-society font-bold text-white mb-6 uppercase tracking-wide">INSIDE <span class="text-gradient-gold">THE VAULT</span></h3>
+            <p class="text-gray-400 max-w-2xl mx-auto font-light leading-relaxed text-lg">Multiple streams of income. One single membership. Choose your path to financial sovereignty or master them all simultaneously.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="glass-panel p-10 card-hover reveal hover-target group border-gray-800">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded bg-[#0a0a0a] border border-[var(--gold-primary)] flex items-center justify-center text-[var(--gold-primary)] text-3xl shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:bg-[var(--gold-primary)] group-hover:text-black transition-all duration-500">
+                        <i class="fa-solid fa-chart-candlestick"></i>
+                    </div>
+                    <span class="font-mono text-[10px] text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">Daily Focus</span>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 font-society uppercase tracking-wider">Options & Crypto</h4>
+                <p class="text-gray-400 text-sm leading-relaxed font-light mb-8">
+                    Live daily callouts from verified 7-figure operators. We don't just alert; we teach technical analysis, supply/demand, and the psychology of holding winners.
+                </p>
+                <ul class="space-y-3 font-mono text-xs text-gray-500 mb-8 border-t border-gray-800 pt-6">
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Live Options Flow</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Crypto Swing Signals</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Macro Economic Briefs</li>
+                </ul>
+                <div class="w-full h-1 bg-[#111] rounded overflow-hidden"><div class="w-[95%] h-full bg-[var(--gold-primary)]"></div></div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-100 hover-target group border-gray-800">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded bg-[#0a0a0a] border border-[var(--gold-primary)] flex items-center justify-center text-[var(--gold-primary)] text-3xl shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:bg-[var(--gold-primary)] group-hover:text-black transition-all duration-500">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <span class="font-mono text-[10px] text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">Instant ROI</span>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 font-society uppercase tracking-wider">Sneakers & Tickets</h4>
+                <p class="text-gray-400 text-sm leading-relaxed font-light mb-8">
+                    Our custom monitors detect shock drops milliseconds after they happen. Flip highly sought-after sneakers, concert tickets, and collectibles for immediate arbitrage.
+                </p>
+                <ul class="space-y-3 font-mono text-xs text-gray-500 mb-8 border-t border-gray-800 pt-6">
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> SNKRS Backend Monitors</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Ticketmaster Bypasses</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Free Auto-Checkout Bots</li>
+                </ul>
+                <div class="w-full h-1 bg-[#111] rounded overflow-hidden"><div class="w-[85%] h-full bg-[var(--gold-primary)]"></div></div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-200 hover-target group border-gray-800">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded bg-[#0a0a0a] border border-[var(--gold-primary)] flex items-center justify-center text-[var(--gold-primary)] text-3xl shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:bg-[var(--gold-primary)] group-hover:text-black transition-all duration-500">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <span class="font-mono text-[10px] text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">Scalable Asset</span>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 font-society uppercase tracking-wider">E-Commerce Empire</h4>
+                <p class="text-gray-400 text-sm leading-relaxed font-light mb-8">
+                    A to Z scaling guides for Dropshipping and TikTok Shop. Find winning products before they saturate, and scale using organic viral marketing strategies.
+                </p>
+                <ul class="space-y-3 font-mono text-xs text-gray-500 mb-8 border-t border-gray-800 pt-6">
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Winning Product Feeds</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Shopify Setup Blueprints</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Meta & TikTok Ads Scaling</li>
+                </ul>
+                <div class="w-full h-1 bg-[#111] rounded overflow-hidden"><div class="w-[90%] h-full bg-[var(--gold-primary)]"></div></div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal hover-target group border-gray-800">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded bg-[#0a0a0a] border border-[var(--gold-primary)] flex items-center justify-center text-[var(--gold-primary)] text-3xl shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:bg-[var(--gold-primary)] group-hover:text-black transition-all duration-500">
+                        <i class="fa-brands fa-amazon"></i>
+                    </div>
+                    <span class="font-mono text-[10px] text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">Passive Income</span>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 font-society uppercase tracking-wider">Amazon FBA</h4>
+                <p class="text-gray-400 text-sm leading-relaxed font-light mb-8">
+                    Leverage Amazon's infrastructure. We teach Wholesale and Online Arbitrage. Buy low from authorized distributors and sell high to millions of Prime customers.
+                </p>
+                <ul class="space-y-3 font-mono text-xs text-gray-500 mb-8 border-t border-gray-800 pt-6">
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Lead Sourcing Software</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Ungating Guides</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Distributor Contacts</li>
+                </ul>
+                <div class="w-full h-1 bg-[#111] rounded overflow-hidden"><div class="w-[80%] h-full bg-[var(--gold-primary)]"></div></div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-100 hover-target group border-gray-800">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded bg-[#0a0a0a] border border-[var(--gold-primary)] flex items-center justify-center text-[var(--gold-primary)] text-3xl shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:bg-[var(--gold-primary)] group-hover:text-black transition-all duration-500">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                    </div>
+                    <span class="font-mono text-[10px] text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">The Core</span>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 font-society uppercase tracking-wider">The 1% Network</h4>
+                <p class="text-gray-400 text-sm leading-relaxed font-light mb-8">
+                    Your net worth is your network. Surround yourself with multi-millionaires, venture capitalists, and relentless hustlers. Elite networking leads to elite opportunities.
+                </p>
+                <ul class="space-y-3 font-mono text-xs text-gray-500 mb-8 border-t border-gray-800 pt-6">
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Exclusive Alpha Chat</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> In-person Meetups</li>
+                    <li><i class="fa-solid fa-angle-right text-[var(--gold-primary)] mr-2"></i> Joint Venture Board</li>
+                </ul>
+                <div class="w-full h-1 bg-[#111] rounded overflow-hidden"><div class="w-[100%] h-full bg-[var(--gold-primary)]"></div></div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-200 relative overflow-hidden hover-target border-[var(--gold-primary)] shadow-[0_0_30px_rgba(212,175,55,0.1)] group">
+                <div class="absolute top-0 right-0 bg-[var(--gold-primary)] text-black text-[10px] font-bold px-5 py-2 rounded-bl-lg uppercase tracking-widest font-mono z-10 shadow-lg">Scale Without Capital</div>
+                <div class="w-16 h-16 rounded bg-[#0a0a0a] border border-[var(--gold-primary)] flex items-center justify-center text-[var(--gold-primary)] text-3xl mb-8 group-hover:bg-[var(--gold-primary)] group-hover:text-black transition-all duration-500 relative z-10">
+                    <i class="fa-solid fa-handshake-simple"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 font-society uppercase tracking-wider relative z-10">20% Affiliate Engine</h4>
+                <p class="text-gray-400 text-sm leading-relaxed font-light mb-8 relative z-10">
+                    We reward loyalty. Share your custom access link and earn a recurring <strong class="text-[var(--gold-primary)]">20% commission</strong> for every elite member you bring into the Society.
+                </p>
+                <ul class="space-y-3 font-mono text-xs text-[var(--gold-primary)] mb-8 border-t border-gray-800 pt-6 relative z-10">
+                    <li><i class="fa-solid fa-link mr-2"></i> Custom Whop Dashboard</li>
+                    <li><i class="fa-solid fa-money-bill-wave mr-2"></i> Instant Monthly Payouts</li>
+                    <li><i class="fa-solid fa-chart-pie mr-2"></i> Zero Limit Scaling</li>
+                </ul>
+                <div class="w-full h-1 bg-[#111] rounded overflow-hidden relative z-10"><div class="w-[100%] h-full bg-[var(--gold-primary)]"></div></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-24 relative bg-[#0a0a0a] border-y border-[rgba(212,175,55,0.1)] overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-[var(--gold-primary)] font-mono tracking-widest uppercase text-xs mb-3">The Ascension</h2>
+            <h3 class="text-4xl md:text-5xl font-society font-bold text-white mb-6 uppercase tracking-wide">YOUR <span class="text-gradient-gold">BLUEPRINT</span></h3>
+            <p class="text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">It doesn't matter where you start. It matters that you execute the protocol.</p>
+        </div>
+
+        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[var(--gold-primary)] before:to-transparent">
+            
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#030303] bg-[var(--gold-primary)] text-black font-bold font-mono shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_15px_rgba(212,175,55,0.5)] z-10">
+                    1
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded hover-target border border-gray-800 group-hover:border-[var(--gold-primary)] transition-all">
+                    <h4 class="font-society text-white text-xl mb-2 uppercase tracking-widest">Infiltration</h4>
+                    <p class="text-sm text-gray-400 font-light">Join the Discord, secure your roles via Whop, and study the foundational guides. Do not rush. Absorb the terminology and set up your brokerage and reselling accounts.</p>
+                </div>
+            </div>
+            
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal delay-100">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#030303] bg-[#111] text-[var(--gold-primary)] border-[var(--gold-primary)] font-bold font-mono shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    2
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded hover-target border border-gray-800 group-hover:border-[var(--gold-primary)] transition-all">
+                    <h4 class="font-society text-white text-xl mb-2 uppercase tracking-widest">Arbitrage & Flipping</h4>
+                    <p class="text-sm text-gray-400 font-light">Use our instant monitors to secure low-risk, high-reward flips (tickets, shoes, cards). Build your initial capital base without risking heavy drawdowns in the markets.</p>
+                </div>
+            </div>
+
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal delay-200">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#030303] bg-[#111] text-[var(--gold-primary)] border-[var(--gold-primary)] font-bold font-mono shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    3
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-6 rounded hover-target border border-gray-800 group-hover:border-[var(--gold-primary)] transition-all">
+                    <h4 class="font-society text-white text-xl mb-2 uppercase tracking-widest">Asset Compounding</h4>
+                    <p class="text-sm text-gray-400 font-light">Inject your flipping profits into our Options and Crypto swing trades. Follow the 7-figure analysts, apply strict risk management, and watch your net worth multiply.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="results" class="py-32 relative overflow-hidden bg-[#030303]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
+            <div>
+                <h2 class="text-[var(--gold-primary)] font-mono tracking-widest uppercase text-xs mb-4">Declassified Success</h2>
+                <h3 class="text-4xl md:text-5xl font-society font-bold text-white leading-tight uppercase tracking-wide">
+                    THE PROOF IS IN <br><span class="text-gradient-gold">THE PROFITS.</span>
+                </h3>
+            </div>
+            <div class="mt-8 md:mt-0 glass-panel px-8 py-4 border border-[var(--gold-primary)] flex items-center gap-5 rounded-sm bg-[#0a0a0a]">
+                <div class="flex text-[var(--gold-primary)] text-xl">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <div class="text-white font-bold font-mono text-sm">5.0 <span class="text-gray-500 font-normal">/ WHOP VERIFIED</span></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="glass-panel p-10 card-hover reveal relative overflow-hidden hover-target border-gray-800">
+                <i class="fa-solid fa-quote-right absolute top-8 right-8 text-5xl text-gray-800 opacity-30"></i>
+                <div class="flex text-[var(--gold-primary)] text-xs mb-8"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="text-gray-300 font-light leading-loose mb-10 relative z-10 text-sm">"Joined strictly for the Options trading floor. Within two weeks, the $NVDA and $SPY callouts paid for my entire year's membership. The analysts don't miss, and the education is top tier."</p>
+                <div class="flex items-center gap-5 border-t border-[rgba(212,175,55,0.1)] pt-8">
+                    <div class="w-12 h-12 rounded bg-[#030303] border border-[var(--gold-primary)] flex items-center justify-center font-bold text-white font-society text-xl shadow-lg">AD</div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm tracking-wide">Alex D.</h5>
+                        <p class="text-[10px] text-[var(--gold-primary)] tracking-widest uppercase font-mono mt-1">Trading Tier</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-100 relative overflow-hidden border-[var(--gold-primary)] shadow-[0_0_40px_rgba(212,175,55,0.1)] transform md:-translate-y-4 hover-target">
+                <div class="absolute top-0 right-0 bg-[var(--gold-primary)] text-black text-[10px] font-bold px-4 py-2 rounded-bl uppercase tracking-wider z-20 font-mono">Elite Status</div>
+                <i class="fa-solid fa-quote-right absolute top-8 right-8 text-5xl text-[rgba(212,175,55,0.1)]"></i>
+                <div class="flex text-[var(--gold-primary)] text-xs mb-8"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="text-gray-300 font-light leading-loose mb-10 relative z-10 text-sm">"The full membership is ridiculous value. I use the monitors to secure hyped sneaker releases, flip them locally, and then inject that profit directly into the crypto signals. It's a complete money printing ecosystem."</p>
+                <div class="flex items-center gap-5 border-t border-[rgba(212,175,55,0.2)] pt-8">
+                    <div class="w-12 h-12 rounded bg-[var(--gold-primary)] flex items-center justify-center font-bold text-black font-society text-xl shadow-lg">MR</div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm tracking-wide">Michael R.</h5>
+                        <p class="text-[10px] text-[var(--gold-primary)] tracking-widest uppercase font-mono mt-1">Full Membership</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-200 relative overflow-hidden hover-target border-gray-800">
+                <i class="fa-solid fa-quote-right absolute top-8 right-8 text-5xl text-gray-800 opacity-30"></i>
+                <div class="flex text-[var(--gold-primary)] text-xs mb-8"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="text-gray-300 font-light leading-loose mb-10 relative z-10 text-sm">"I was struggling with Amazon FBA gating. Within 48 hours of joining, the network provided me with the exact authorized distributors I needed to get ungated. You are literally buying time and connections."</p>
+                <div class="flex items-center gap-5 border-t border-[rgba(212,175,55,0.1)] pt-8">
+                    <div class="w-12 h-12 rounded bg-[#030303] border border-[var(--gold-primary)] flex items-center justify-center font-bold text-white font-society text-xl shadow-lg">SJ</div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm tracking-wide">Sarah J.</h5>
+                        <p class="text-[10px] text-[var(--gold-primary)] tracking-widest uppercase font-mono mt-1">Full Membership</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal relative overflow-hidden hover-target border-gray-800 hidden lg:block">
+                <div class="flex text-[var(--gold-primary)] text-xs mb-8"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="text-gray-300 font-light leading-loose mb-10 relative z-10 text-sm">"The ticket bypasses are insane. Managed to secure 4 floor seats to a massive concert while the general public was stuck in a 100,000 person queue. Flipped them for double. Pays for the sub immediately."</p>
+                <div class="flex items-center gap-5 border-t border-[rgba(212,175,55,0.1)] pt-8">
+                    <div class="w-12 h-12 rounded bg-[#030303] border border-gray-600 flex items-center justify-center font-bold text-white font-society text-xl shadow-lg">TC</div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm tracking-wide">Tyler C.</h5>
+                        <p class="text-[10px] text-gray-500 tracking-widest uppercase font-mono mt-1">Full Membership</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-100 relative overflow-hidden hover-target border-gray-800 hidden lg:block">
+                <div class="flex text-[var(--gold-primary)] text-xs mb-8"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="text-gray-300 font-light leading-loose mb-10 relative z-10 text-sm">"What I love is the lack of ego. In the networking chat, you have multi-millionaires dropping alpha for free, just to see others win. Hidden Society is a brotherhood, not just a discord server."</p>
+                <div class="flex items-center gap-5 border-t border-[rgba(212,175,55,0.1)] pt-8">
+                    <div class="w-12 h-12 rounded bg-[#030303] border border-gray-600 flex items-center justify-center font-bold text-white font-society text-xl shadow-lg">DP</div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm tracking-wide">Daniel P.</h5>
+                        <p class="text-[10px] text-gray-500 tracking-widest uppercase font-mono mt-1">Full Membership</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 card-hover reveal delay-200 relative overflow-hidden hover-target border-gray-800 hidden lg:block">
+                <div class="flex text-[var(--gold-primary)] text-xs mb-8"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="text-gray-300 font-light leading-loose mb-10 relative z-10 text-sm">"The 20% affiliate link is basically passive income. I posted my link on Twitter reviewing the group, and now I have 15 people under my sub. Easiest money I've made online."</p>
+                <div class="flex items-center gap-5 border-t border-[rgba(212,175,55,0.1)] pt-8">
+                    <div class="w-12 h-12 rounded bg-[#030303] border border-[var(--gold-primary)] flex items-center justify-center font-bold text-white font-society text-xl shadow-lg">NK</div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm tracking-wide">Nathan K.</h5>
+                        <p class="text-[10px] text-[var(--gold-primary)] tracking-widest uppercase font-mono mt-1">Trading Tier</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="py-32 relative bg-[#0a0a0a] border-y border-[rgba(212,175,55,0.1)] overflow-hidden">
+    <div class="glow-orb-gold top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-40"></div>
+    <div class="absolute inset-0 bg-topography opacity-10 pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center mb-20 reveal">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <div class="w-12 h-[1px] bg-[var(--gold-primary)]"></div>
+                <span class="text-[var(--gold-primary)] font-mono tracking-widest uppercase text-xs">The Gates</span>
+                <div class="w-12 h-[1px] bg-[var(--gold-primary)]"></div>
+            </div>
+            <h3 class="text-5xl md:text-6xl font-society font-bold text-white mb-6 uppercase tracking-widest">CHOOSE YOUR <span class="text-gradient-gold">PATH</span></h3>
+            <p class="text-gray-400 max-w-xl mx-auto font-light text-lg">Access is strictly limited to maintain the quality and latency of the network. Choose the tier that aligns with your wealth-generation goals.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            
+            <div class="glass-panel rounded-sm overflow-hidden border border-gray-800 hover:border-[var(--gold-primary)] transition-all duration-500 reveal flex flex-col relative z-10 hover-target group">
+                <div class="p-12 border-b border-[rgba(255,255,255,0.05)] bg-[#030303]">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="font-society text-3xl text-white font-bold uppercase tracking-widest">Trading Tier</h4>
+                        <i class="fa-solid fa-chart-line text-[var(--gold-primary)] text-3xl opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-10 font-light leading-relaxed">Dedicated access to our elite financial markets floor.</p>
+                    <div class="flex items-end gap-3">
+                        <span class="text-6xl font-society font-black text-white">$49.99</span>
+                    </div>
+                    <div class="text-gray-500 font-bold mt-3 uppercase tracking-widest text-[10px] font-mono">Billed Monthly</div>
+                </div>
+                
+                <div class="p-12 flex-1 flex flex-col bg-[#0a0a0a]">
+                    <ul class="space-y-6 mb-12 flex-1">
+                        <li class="flex items-start gap-4 text-gray-300 text-sm"><i class="fa-solid fa-check text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Daily Options & Crypto Callouts</span></li>
+                        <li class="flex items-start gap-4 text-gray-300 text-sm"><i class="fa-solid fa-check text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Technical Analysis & Education</span></li>
+                        <li class="flex items-start gap-4 text-gray-300 text-sm"><i class="fa-solid fa-check text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Live Trading Floor Voice Access</span></li>
+                        <li class="flex items-start gap-4 text-gray-300 text-sm"><i class="fa-solid fa-check text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Exclusive Networking Channels</span></li>
+                        <li class="flex items-start gap-4 text-white font-bold text-sm"><i class="fa-solid fa-link text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">20% Recurring Affiliate Commission</span></li>
+                    </ul>
+                    <a href="https://whop.com/hidden-society/hidden-trading?a=digitalartlab" target="_blank" class="w-full py-5 rounded-sm border border-[var(--gold-primary)] text-[var(--gold-primary)] hover:bg-[var(--gold-primary)] hover:text-black font-society font-bold tracking-widest text-center transition-all text-lg uppercase shadow-[0_0_20px_rgba(212,175,55,0.1)]">
+                        UNLOCK TRADING
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-sm overflow-hidden border border-[var(--gold-primary)] shadow-[0_0_40px_rgba(212,175,55,0.15)] hover:shadow-[0_0_70px_rgba(212,175,55,0.3)] transition-all duration-500 reveal delay-100 flex flex-col relative transform md:-translate-y-6 z-20 hover-target">
+                <div class="absolute top-0 right-0 bg-[var(--gold-primary)] text-black font-black text-[10px] px-6 py-2 rounded-bl-sm uppercase tracking-widest font-mono z-10 shadow-lg">The Complete Ecosystem</div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--gold-primary)] to-transparent opacity-50"></div>
+                
+                <div class="p-12 border-b border-[rgba(212,175,55,0.2)] bg-[#030303] relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-6 relative z-10">
+                        <h4 class="font-society text-3xl text-white font-bold uppercase tracking-widest">Full Society</h4>
+                        <i class="fa-solid fa-crown text-[var(--gold-primary)] text-3xl"></i>
+                    </div>
+                    <p class="text-[var(--gold-primary)] text-sm font-medium mb-10 relative z-10 leading-relaxed">Unrestricted access to the entire wealth generation vault.</p>
+                    <div class="flex items-end gap-3 relative z-10">
+                        <span class="text-6xl font-society font-black text-white">$79.99</span>
+                    </div>
+                    <div class="text-[var(--gold-primary)] font-bold mt-3 uppercase tracking-widest text-[10px] font-mono relative z-10">Billed Monthly</div>
+                </div>
+                
+                <div class="p-12 flex-1 flex flex-col bg-[#0a0a0a]">
+                    <ul class="space-y-6 mb-12 flex-1">
+                        <li class="flex items-start gap-4 text-white font-bold text-sm"><i class="fa-solid fa-bolt text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Includes ALL Trading Tier Features</span></li>
+                        <li class="flex items-start gap-4 text-gray-300 text-sm"><i class="fa-solid fa-check text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Sneaker & Ticket Reselling Monitors</span></li>
+                        <li class="flex items-start gap-4 text-gray-300 text-sm"><i class="fa-solid fa-check text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Amazon FBA & E-commerce Blueprints</span></li>
+                        <li class="flex items-start gap-4 text-gray-300 text-sm"><i class="fa-solid fa-check text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">Free Auto-Checkout Tools (Bots)</span></li>
+                        <li class="flex items-start gap-4 text-white font-bold text-sm"><i class="fa-solid fa-link text-[var(--gold-primary)] mt-1 text-lg"></i> <span class="leading-relaxed">20% Recurring Affiliate Commission</span></li>
+                    </ul>
+                    <a href="https://whop.com/hidden-society/hidden-society?a=digitalartlab" target="_blank" class="w-full py-5 rounded-sm btn-gold font-society font-bold tracking-widest text-center transition-all text-xl uppercase shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:scale-105">
+                        ENTER THE SOCIETY
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-20 text-center reveal delay-200 border-t border-gray-800 pt-12">
+            <a href="https://whop.com/hidden-society?a=digitalartlab" target="_blank" class="text-[var(--gold-primary)] hover:text-white font-bold text-sm font-mono tracking-widest uppercase transition-colors hover-target">>>> Browse all plans on the Main Hub <<<</a>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 relative overflow-hidden bg-[#030303]">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-4xl md:text-5xl font-society font-bold text-white uppercase mb-6 tracking-widest">The <span class="text-gradient-gold">Inquiry</span> (FAQ)</h2>
+            <div class="w-20 h-[1px] bg-[var(--gold-primary)] mx-auto rounded"></div>
+        </div>
+
+        <div class="space-y-4">
+            
+            <div class="glass-panel border border-gray-800 rounded-sm overflow-hidden reveal hover-target faq-container">
+                <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-btn transition-colors hover:bg-[rgba(255,255,255,0.02)]">
+                    <span class="font-bold text-white tracking-widest font-society text-lg uppercase">Do I need a lot of capital to start?</span>
+                    <i class="fa-solid fa-plus accordion-icon text-[var(--gold-primary)] transition-transform duration-300 text-xl"></i>
+                </button>
+                <div class="accordion-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-gray-800 pt-6 font-light">
+                        No. The beauty of the Full Membership is the diversity of income streams. You can start flipping sneakers or tickets with as little as $200. As you build capital, you can scale into Amazon FBA or Options Trading. We teach you how to compound from zero.
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel border border-gray-800 rounded-sm overflow-hidden reveal delay-100 hover-target faq-container">
+                <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-btn transition-colors hover:bg-[rgba(255,255,255,0.02)]">
+                    <span class="font-bold text-white tracking-widest font-society text-lg uppercase">Trading vs Full Membership?</span>
+                    <i class="fa-solid fa-plus accordion-icon text-[var(--gold-primary)] transition-transform duration-300 text-xl"></i>
+                </button>
+                <div class="accordion-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-gray-800 pt-6 font-light">
+                        The Trading Tier ($49.99) is strictly for our financial markets floor (Options, Crypto, Stocks). The Full Membership ($79.99) includes the Trading floor PLUS everything else: Sneaker/Ticket monitors, E-commerce guides, Amazon FBA, and auto-checkout bots.
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel border border-gray-800 rounded-sm overflow-hidden reveal delay-200 hover-target faq-container">
+                <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-btn transition-colors hover:bg-[rgba(255,255,255,0.02)]">
+                    <span class="font-bold text-white tracking-widest font-society text-lg uppercase">Is this beginner friendly?</span>
+                    <i class="fa-solid fa-plus accordion-icon text-[var(--gold-primary)] transition-transform duration-300 text-xl"></i>
+                </button>
+                <div class="accordion-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-gray-800 pt-6 font-light">
+                        Yes. We have dedicated 101 sections for every category. Whether you have never traded a stock in your life or don't know what a sneaker bot is, our comprehensive guides and 24/7 community support will get you up to speed.
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel border border-gray-800 rounded-sm overflow-hidden reveal hover-target faq-container">
+                <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-btn transition-colors hover:bg-[rgba(255,255,255,0.02)]">
+                    <span class="font-bold text-white tracking-widest font-society text-lg uppercase">How does the 20% Affiliate program work?</span>
+                    <i class="fa-solid fa-plus accordion-icon text-[var(--gold-primary)] transition-transform duration-300 text-xl"></i>
+                </button>
+                <div class="accordion-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-gray-800 pt-6 font-light">
+                        Upon joining via Whop, you receive a custom affiliate link. Share it with your friends or audience. If they join through your link, you receive a 20% recurring commission deposited directly to you every single month they remain a member.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-panel border border-gray-800 rounded-sm overflow-hidden reveal delay-100 hover-target faq-container">
+                <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-btn transition-colors hover:bg-[rgba(255,255,255,0.02)]">
+                    <span class="font-bold text-white tracking-widest font-society text-lg uppercase">What platforms do the monitors cover?</span>
+                    <i class="fa-solid fa-plus accordion-icon text-[var(--gold-primary)] transition-transform duration-300 text-xl"></i>
+                </button>
+                <div class="accordion-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-gray-800 pt-6 font-light">
+                        Our backend monitors scrape over 200+ global sites including Nike SNKRS, Supreme, Shopify networks, Ticketmaster, AXS, and Amazon/Target for price errors and shock drops. You will be notified before the general public.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-panel border border-gray-800 rounded-sm overflow-hidden reveal delay-200 hover-target faq-container">
+                <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none faq-btn transition-colors hover:bg-[rgba(255,255,255,0.02)]">
+                    <span class="font-bold text-white tracking-widest font-society text-lg uppercase">Can I cancel anytime?</span>
+                    <i class="fa-solid fa-plus accordion-icon text-[var(--gold-primary)] transition-transform duration-300 text-xl"></i>
+                </button>
+                <div class="accordion-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-gray-800 pt-6 font-light">
+                        Absolutely. We don't lock you into contracts. You manage your subscription entirely through the Whop dashboard, and can pause or cancel your recurring payments with zero friction.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer class="bg-[#030303] pt-24 pb-12 border-t-2 border-[rgba(212,175,55,0.3)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-topography opacity-10 z-0"></div>
+    <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--gold-primary)] to-transparent opacity-50"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-20">
+            
+            <div class="lg:col-span-5">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-14 h-14 rounded-sm border border-[var(--gold-primary)] flex items-center justify-center bg-[#0a0a0a] shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                        <i class="fa-solid fa-mask text-[var(--gold-primary)] text-2xl"></i>
+                    </div>
+                    <span class="font-society font-bold text-white text-4xl tracking-[0.2em] uppercase">Hidden</span>
+                </div>
+                <p class="text-gray-500 font-light text-sm max-w-sm mb-10 leading-loose font-montserrat">
+                    The internet's most exclusive wealth generation network. Leverage our institutional tools, our proprietary monitors, and our elite community to escape the matrix and build true financial sovereignty.
+                </p>
+                <div class="flex gap-5">
+                    <a href="#" class="w-12 h-12 rounded border border-gray-800 flex items-center justify-center text-gray-400 hover:text-black hover:bg-[var(--gold-primary)] hover:border-[var(--gold-primary)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 hover-target text-xl"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="w-12 h-12 rounded border border-gray-800 flex items-center justify-center text-gray-400 hover:text-black hover:bg-[var(--gold-primary)] hover:border-[var(--gold-primary)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 hover-target text-xl"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="w-12 h-12 rounded border border-gray-800 flex items-center justify-center text-gray-400 hover:text-black hover:bg-[var(--gold-primary)] hover:border-[var(--gold-primary)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 hover-target text-xl"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-3 lg:col-start-7">
+                <h4 class="font-society text-white text-lg tracking-widest uppercase mb-8 border-b border-gray-800 pb-3">The Archives</h4>
+                <ul class="space-y-5 text-xs text-gray-400 font-mono uppercase tracking-wider">
+                    <li><a href="#manifesto" class="hover:text-[var(--gold-primary)] transition-colors hover-target">> The Doctrine</a></li>
+                    <li><a href="#vault" class="hover:text-[var(--gold-primary)] transition-colors hover-target">> The Vault</a></li>
+                    <li><a href="#results" class="hover:text-[var(--gold-primary)] transition-colors hover-target">> Verified Proof</a></li>
+                    <li><a href="#pricing" class="hover:text-[var(--gold-primary)] transition-colors hover-target">> Membership Access</a></li>
+                    <li><a href="https://whop.com/hidden-society?a=digitalartlab" class="hover:text-[var(--gold-primary)] transition-colors hover-target">> Member Login</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-3">
+                <h4 class="font-society text-white text-lg tracking-widest uppercase mb-8 border-b border-gray-800 pb-3">Legality</h4>
+                <ul class="space-y-5 text-xs text-gray-400 font-mono uppercase tracking-wider">
+                    <li><a href="#" class="hover:text-white transition-colors hover-target">> Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors hover-target">> Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors hover-target">> Refund Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors hover-target">> Risk Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-900 pt-10 flex flex-col lg:flex-row justify-between items-center gap-8 text-center lg:text-left">
+            <p class="font-mono text-[11px] text-gray-500 tracking-[0.3em] uppercase">
+                &copy; 2026 HIDDEN SOCIETY. ALL RIGHTS RESERVED.
+            </p>
+            <p class="text-[9px] text-gray-600 max-w-3xl leading-relaxed uppercase font-mono tracking-wider">
+                Trading, reselling, and e-commerce involve substantial risk and are not suitable for all individuals. Hidden Society provides educational content, monitors, and networking, but does not guarantee financial success. Past performance is not indicative of future results. Information provided is not financial advice. Consult a professional before investing.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- 1. Luxury Custom Cursor Logic ---
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorRing = document.getElementById('cursor-ring');
+        const hoverElements = document.querySelectorAll('.hover-target, a, button');
+
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                // Ring follows with a smooth delay
+                cursorRing.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 300, fill: "forwards" });
+            });
+            
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+
+        // --- 2. Mobile Menu Toggle ---
+        const hb = document.getElementById('menu-btn');
+        const mm = document.getElementById('mobile-menu');
+        const ml = mm.querySelectorAll('a');
+
+        function tog(fc = false) {
+            const o = mm.classList.contains('hidden');
+            if (fc || !o) {
+                mm.classList.add('hidden');
+                mm.classList.remove('flex');
+            } else {
+                mm.classList.remove('hidden');
+                mm.classList.add('flex');
+            }
+        }
+        hb.addEventListener('click', () => tog());
+        ml.forEach(l => l.addEventListener('click', () => tog(true)));
+
+        // --- 3. Navbar Scroll Glassmorphism ---
+        const nav = document.getElementById('navbar');
+        const innerNav = nav.querySelector('.glass-panel');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-[rgba(3,3,3,0.95)]', 'backdrop-blur-3xl', 'border-b', 'border-[rgba(212,175,55,0.2)]', 'shadow-[0_10px_50px_rgba(0,0,0,0.9)]');
+                nav.style.top = '0';
+                if(innerNav) {
+                    innerNav.classList.remove('glass-panel', 'border', 'px-8', 'py-4', 'rounded-sm');
+                    innerNav.classList.add('bg-transparent', 'border-transparent', 'py-3');
+                }
+            } else {
+                nav.classList.remove('bg-[rgba(3,3,3,0.95)]', 'backdrop-blur-3xl', 'border-b', 'border-[rgba(212,175,55,0.2)]', 'shadow-[0_10px_50px_rgba(0,0,0,0.9)]');
+                nav.style.top = '40px';
+                if(innerNav) {
+                    innerNav.classList.add('glass-panel', 'border', 'px-8', 'py-4', 'rounded-sm');
+                    innerNav.classList.remove('bg-transparent', 'border-transparent', 'py-3');
+                }
+            }
+        });
+
+        // --- 4. Intersection Observer (Scroll Reveals) ---
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        
+        setTimeout(() => {
+            document.querySelectorAll('.reveal:not(.active)').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('active');
+            });
+        }, 500);
+
+        // --- 5. Advanced FAQ Accordion Logic ---
+        const faqButtons = document.querySelectorAll('.faq-btn');
+        faqButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.accordion-icon');
+                const container = this.closest('.faq-container');
+                const isOpen = content.classList.contains('opacity-100');
+
+                document.querySelectorAll('.accordion-content').forEach(c => {
+                    c.style.maxHeight = null; c.classList.remove('opacity-100'); c.classList.add('opacity-0');
+                });
+                document.querySelectorAll('.accordion-icon').forEach(i => {
+                    i.classList.remove('rotate-45', 'text-[var(--gold-primary)]');
+                });
+                document.querySelectorAll('.faq-container').forEach(c => {
+                    c.classList.remove('border-[var(--gold-primary)]');
+                });
+
+                if (!isOpen) {
+                    container.classList.add('border-[var(--gold-primary)]');
+                    content.classList.remove('opacity-0'); 
+                    content.classList.add('opacity-100');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.classList.add('rotate-45', 'text-[var(--gold-primary)]');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
